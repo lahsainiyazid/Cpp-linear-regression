@@ -26,7 +26,7 @@ std::vector<double> predict(const std::vector<double>&x,double m,double b){
   size_t n=x.size();
   std::vector<double>y(n);
   for (size_t i=0;i<n;i++){
-    y.push_back(m*x[i]+b);
+    y[i]=(m*x[i]+b);
   }
 return y;}
 
