@@ -18,5 +18,7 @@ int main (){
   double mae_1=mae(y_preds,y_test);
   std::cout<<""<<std::endl;
   std::cout<<"Our mae="<<mae_1<<std::endl;
+  double mse_1=mse(y_preds,y_test);
+  std::cout<<"Our mse="<<mse_1<<std::endl;
   return 0;
 }
