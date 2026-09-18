@@ -27,17 +27,16 @@ double intercept(const std::vector<double>&x,const std::vector<double>&y,double 
    double b=intercept(x,y,m);
    std::vector<double>params={m,b};
  return params;}
-std::vector<double> predict(const std::vector<double>&x_test,const std::vector<double>&x_train,const std::vector<double>&y){
-  if(x_train.empty()){
+std::vector<double> predict(const std::vector<double>&x_test,const std::vector<double>&regression_params){
+  if(x_test.empty()){
     throw std::invalid_argument("X_train vector must not be empty!");
   }
-  std::vector<double>regression_params=train(x_train,y);
   double m=regression_params[0];
   double b=regression_params[1];
   size_t n=x_test.size();
-  std::vector<double>y_preds;
+ std::vector<double>y_preds(n); 
   for (size_t i=0;i<n;i++){
-    y.push_back(m*y[i]+b);
+    y_preds[i]=(m*(y_preds[i])+b);
   }
 return y_preds; }
 
