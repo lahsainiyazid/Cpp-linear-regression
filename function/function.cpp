@@ -22,11 +22,22 @@ double intercept(const std::vector<double>&x,const std::vector<double>&y,double 
    double x_mean=vector_mean(x);
     double b=y_mean-m*x_mean;
     return b;}
-std::vector<double> predict(const std::vector<double>&x,double m,double b){
-  size_t n=x.size();
-  std::vector<double>y(n);
-  for (size_t i=0;i<n;i++){
-    y[i]=(m*x[i]+b);
+ std::vector<double> train (const std::vector<double>&x,const std::vector<double>&y){
+   double m=slope(x,y);
+   double b=intercept(x,y,m);
+   std::vector<double>params={m,b};
+ return params;}
+std::vector<double> predict(const std::vector<double>&x_test,const std::vector<double>&x_train,const std::vector<double>&y){
+  if(x_train.empty()){
+    throw std::invalid_argument("X_train vector must not be empty!");
   }
-return y;}
+  std::vector<double>regression_params=train(x_train,y);
+  double m=regression_params[0];
+  double b=regression_params[1];
+  size_t n=x_test.size();
+  std::vector<double>y_preds;
+  for (size_t i=0;i<n;i++){
+    y.push_back(m*y[i]+b);
+  }
+return y_preds; }
 
