@@ -1,5 +1,6 @@
 #include<vector>
 #include <stdexcept>
+#include<cmath>
 #include "metrics.hpp"
 double mae(const std::vector<double>&y_pred,const std::vector<double>&y){
   if (y.size()!=y_pred.size()){
@@ -32,5 +33,20 @@ double mse(const std::vector<double>&y_pred,const std::vector<double>&y){
       squarred_sum_error+=(y_pred[i]-y[i])*(y_pred[i]-y[i]);
     }
   return squarred_sum_error/n;}
+}
+double rmse(const std::vector<double>&y_pred,const std::vector<double>&y){
+  if (y.size()!=y_pred.size()){
+    throw std::invalid_argument("Our vector sizes must match!");
+  }
+  else if (y.size()<2){
+    throw std::invalid_argument("Vector size must be of at least 2!");
+  }
+  else {
+    double root_squarred_sum_error=0;
+    size_t n=y.size();
+    for (size_t i=0;i<n;i++){
+      root_squarred_sum_error+=std::sqrt((y_pred[i]-y[i])*(y_pred[i]-y[i]));
+    }
+  return root_squarred_sum_error/n;}
 }
 

@@ -20,5 +20,7 @@ int main (){
   std::cout<<"Our mae="<<mae_1<<std::endl;
   double mse_1=mse(y_preds,y_test);
   std::cout<<"Our mse="<<mse_1<<std::endl;
+  double rmse_1=rmse(y_preds,y_test);
+  std::cout<<"Our rmse="<<rmse_1<<std::endl;
   return 0;
 }

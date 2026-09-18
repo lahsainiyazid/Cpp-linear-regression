@@ -67,8 +67,10 @@ void vector_show(const std::vector<double>&x){
     throw std::invalid_argument("Vectors must not be empty!");
   }
   std::cout<<"Vector:{";
-  for (double val:x){
-    std::cout<<val<<",";
+  size_t n=x.size();
+  for (size_t i=0;i<n-1;i++){
+    std::cout<<x[i]<<",";
   }
+  std::cout<<x[n-1];
   std::cout<<"}";
 }
