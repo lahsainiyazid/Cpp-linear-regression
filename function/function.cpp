@@ -36,7 +36,7 @@ std::vector<double> predict(const std::vector<double>&x_test,const std::vector<d
   size_t n=x_test.size();
  std::vector<double>y_preds(n); 
   for (size_t i=0;i<n;i++){
-    y_preds[i]=(m*(y_preds[i])+b);
+    y_preds[i]=(m*x_test[i]+b);
   }
 return y_preds; }
 
